@@ -12,8 +12,7 @@ const thoughtSchema = new Schema(
         username: [{
             type: String,
             required: true
-            // type: Schema.Types.ObjectId,
-            // ref: 'thought'
+
         }],
         freinds: [{
             type: Schema.Types.ObjectId,

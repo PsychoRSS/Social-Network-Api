@@ -3,8 +3,12 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
     {
-        username: {String, unique: true, required: true, trimmed},
-        email: {String, required: true, unique: true, },
+        username: {
+            String, unique: true, required: true, trimmed:true,
+        },
+        email: {
+            String, required: true, unique: true, 
+        },
         thoughts: [{
             type: Schema.Types.ObjectId,
             ref: 'thought'
