@@ -3,9 +3,9 @@ const { Schema, model } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
-        reactionId: {
+        // reactionId: {
             
-        },
+        // },
         reactionBody: {
             type: String, required: true, max:280,
         },
@@ -24,6 +24,6 @@ reactionSchema.virtual('timestamp').get(() => {
     return this.createdAt
 });
 
-const Reaction = model('thought', reactionSchema);
+const Reaction = model('reaction', reactionSchema);
 
 module.exports = Reaction

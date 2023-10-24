@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const thoughtSchema = new Schema(
     {
         thoughtText: {
-            String, unique: true, required: true, min: 1,max: 280
+           type: String, unique: true, required: true, min: 1,max: 280
         },
         createdAt: {
             type: Date, default: Date.now 

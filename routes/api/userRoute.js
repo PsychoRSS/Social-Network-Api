@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User } = require('../../models');
 
 // GET all Users
-router.get('/api/users', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const allUsers = await User.find();
     res.json(allUsers);
@@ -13,7 +13,7 @@ router.get('/api/users', async (req, res) => {
   }
 });
 
-router.get('/api/users/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const user = await User.findOne({_id: req.params.userId});
 
@@ -26,7 +26,7 @@ router.get('/api/users/:id', async (req, res) => {
   }
 });
 
-router.post('/api/users', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const allUsers = await User.create(req.body);
     res.json(allUsers);
@@ -37,7 +37,7 @@ router.post('/api/users', async (req, res) => {
   }
 });
 
-router.put('/api/users/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const allUsers = await User.findOneAndUpdate({_id: req.params.userId});
     res.json(allUsers);
@@ -48,7 +48,7 @@ router.put('/api/users/:id', async (req, res) => {
   }
 });
 
-router.delete('/api/users/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const allUsers = await User.delete({_id:req.params.userId});
     res.json(allUsers);
