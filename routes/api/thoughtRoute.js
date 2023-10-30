@@ -48,6 +48,10 @@ router.put('/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.delete('/:id',async (req, res) => {
+  const deletedThought = Thought.deleteOne({})
 })
 
 module.exports = router;
