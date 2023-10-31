@@ -29,8 +29,14 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const allUsers = await Thought.create(req.body);
-    res.json(allUsers);
+    const newThought = await Thought.create(req.body);
+
+    const userThought = await User.findOneAndUpdate(
+      { _id: req.body.userId},
+      { $push: {thoughts: newThought._id} },
+      {new: true}
+    ) 
+    res.json(userThought);
     
   } catch (err) {
     console.log(err);
@@ -40,7 +46,8 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
   try {
-    const editThought = await Thought.findByIdAndUpdate()
+    const editThought = await Thought.findByIdAndUpdate({_id:req.params.thoughtId})
+    res.json(editThought);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -48,5 +55,11 @@ router.put('/', async (req, res) => {
 });
 
 router.delete('/:id',async (req, res) => {
-  const deletedThought = Thought.deleteOne({})
+ try {
+  const deletedThought = Thought.deleteOne({_id:req.params.thoughtId})
+  res.json(deletedThought)
+ } catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+ }
 })

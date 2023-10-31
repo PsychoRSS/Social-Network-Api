@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const allUsers = await User.delete({_id:req.params.userId});
+    const allUsers = await User.deleteOne({_id:req.params.userId});
     res.json(allUsers);
     
   } catch (err) {
