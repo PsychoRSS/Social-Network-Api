@@ -27,6 +27,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Create a new Thought
 router.post('/', async (req, res) => {
   try {
     const newThought = await Thought.create(req.body);
@@ -44,6 +45,8 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// Update a Thought
 router.put('/', async (req, res) => {
   try {
     const editThought = await Thought.findByIdAndUpdate({_id:req.params.thoughtId})
@@ -63,3 +66,6 @@ router.delete('/:id',async (req, res) => {
   res.status(500).json(err);
  }
 })
+
+
+module.exports = router;
